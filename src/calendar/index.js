@@ -254,6 +254,12 @@ class Calendar extends Component {
 
     const dates = this.props.markedDates[day.toString('yyyy-MM-dd')] || EmptyArray;
     if (dates.length || dates) {
+      /** Limit dots to max 3 */
+      var customDates
+      if(dates.dots?.length > 2) {
+        customDates = {dots: [ dates.dots[0], dates.dots[1], dates.dots[2] ] };
+        return customDates;
+      }
       return dates;
     } else {
       return false;
